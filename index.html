@@ -1,0 +1,364 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aiwiki.yy - AI Tools Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Theme Styles */
+        .theme-dark {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .theme-dark .tool-card {
+            background: #2d2d2d;
+            color: #fff;
+        }
+
+        .theme-dark .tool-description {
+            color: #bbb;
+        }
+
+        .theme-minimal {
+            background: #fff;
+        }
+
+        .theme-minimal .tool-card {
+            border: 1px solid #eee;
+            box-shadow: none;
+        }
+
+        .theme-colorful {
+            background: linear-gradient(135deg, #f6d365, #fda085);
+        }
+
+        .category-filter {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .category-select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-category {
+            font-size: 0.8rem;
+            color: #6366f1;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .tool-link {
+            display: inline-block;
+            background: #6366f1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .tool-link:hover {
+            background: #4f46e5;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <select class="theme-switcher theme-select" id="themeSwitcher">
+        <option value="default">Default Theme</option>
+        <option value="dark">Dark Theme</option>
+        <option value="minimal">Minimal Theme</option>
+        <option value="colorful">Colorful Theme</option>
+    </select>
+
+    <header>
+        <h1>aiwiki.yy</h1>
+        <p>Your Ultimate Collection of AI Tools</p>
+    </header>
+
+    <div class="container">
+        <input type="text" class="search-box" placeholder="Search AI tools..." id="searchBox">
+        
+        <div class="category-filter">
+            <select class="category-select" id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="text-generation">Text Generation</option>
+                <option value="image-generation">Image Generation</option>
+                <option value="code-assistant">Code Assistant</option>
+                <option value="audio-generation">Audio Generation</option>
+                <option value="writing">Writing</option>
+                <option value="design">Design</option>
+                <option value="video">Video</option>
+                <option value="research">Research</option>
+                <option value="productivity">Productivity</option>
+                <option value="voice">Voice</option>
+                <!-- Add many more categories here -->
+            </select>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-category">Text Generation</div>
+                <h3 class="tool-title">ChatGPT</h3>
+                <p class="tool-description">Advanced language model for conversation and content creation</p>
+                <a href="https://chat.openai.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Image Generation</div>
+                <h3 class="tool-title">Midjourney</h3>
+                <p class="tool-description">AI art generation through Discord</p>
+                <a href="https://www.midjourney.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Code Assistant</div>
+                <h3 class="tool-title">GitHub Copilot</h3>
+                <p class="tool-description">AI-powered code completion and generation</p>
+                <a href="https://github.com/features/copilot" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Audio Generation</div>
+                <h3 class="tool-title">Mubert</h3>
+                <p class="tool-description">AI-powered music and sound generation</p>
+                <a href="https://mubert.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Writing Assistant</div>
+                <h3 class="tool-title">Grammarly</h3>
+                <p class="tool-description">AI-powered writing improvement and correction</p>
+                <a href="https://www.grammarly.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Design</div>
+                <h3 class="tool-title">DALL-E 2</h3>
+                <p class="tool-description">Create realistic images and art from text descriptions</p>
+                <a href="https://labs.openai.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Video Creation</div>
+                <h3 class="tool-title">Synthesia</h3>
+                <p class="tool-description">AI video generation with virtual presenters</p>
+                <a href="https://www.synthesia.io" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Research</div>
+                <h3 class="tool-title">Elicit</h3>
+                <p class="tool-description">AI research assistant for faster literature review</p>
+                <a href="https://elicit.org" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Productivity</div>
+                <h3 class="tool-title">Notion AI</h3>
+                <p class="tool-description">AI-powered writing and organization assistant</p>
+                <a href="https://www.notion.so" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Voice Generation</div>
+                <h3 class="tool-title">Elevenlabs</h3>
+                <p class="tool-description">AI voice generation and cloning</p>
+                <a href="https://elevenlabs.io" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Marketing</div>
+                <h3 class="tool-title">Copy.ai</h3>
+                <p class="tool-description">AI-powered copywriting and content generation</p>
+                <a href="https://www.copy.ai" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Video Editing</div>
+                <h3 class="tool-title">Runway</h3>
+                <p class="tool-description">AI-powered video editing and effects</p>
+                <a href="https://runway.ml" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Translation</div>
+                <h3 class="tool-title">DeepL</h3>
+                <p class="tool-description">AI-powered language translation</p>
+                <a href="https://www.deepl.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Email Assistant</div>
+                <h3 class="tool-title">EmailTree AI</h3>
+                <p class="tool-description">Automated email response and management</p>
+                <a href="https://emailtree.ai" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Data Analysis</div>
+                <h3 class="tool-title">Obviously AI</h3>
+                <p class="tool-description">No-code AI platform for predictions and analytics</p>
+                <a href="https://www.obviously.ai" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Audio Editing</div>
+                <h3 class="tool-title">Descript</h3>
+                <p class="tool-description">AI-powered audio and video editing</p>
+                <a href="https://www.descript.com" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Content Creation</div>
+                <h3 class="tool-title">Jasper</h3>
+                <p class="tool-description">AI content generation platform</p>
+                <a href="https://www.jasper.ai" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Image Editing</div>
+                <h3 class="tool-title">Remove.bg</h3>
+                <p class="tool-description">AI-powered background removal</p>
+                <a href="https://www.remove.bg" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">3D Generation</div>
+                <h3 class="tool-title">GET3D</h3>
+                <p class="tool-description">AI-powered 3D model generation</p>
+                <a href="https://nv-tlabs.github.io/GET3D" class="tool-link">Try It</a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-category">Content Analysis</div>
+                <h3 class="tool-title">Crayon</h3>
+                <p class="tool-description">AI-powered market and competitor intelligence</p>
+                <a href="https://www.crayon.co" class="tool-link">Try It</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const themeSwitcher = document.getElementById('themeSwitcher');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const searchBox = document.getElementById('searchBox');
+        const toolCards = document.querySelectorAll('.tool-card');
+
+        themeSwitcher.addEventListener('change', (e) => {
+            document.body.className = `theme-${e.target.value}`;
+        });
+
+        function filterTools() {
+            const searchTerm = searchBox.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+
+            toolCards.forEach(card => {
+                const title = card.querySelector('.tool-title').textContent.toLowerCase();
+                const description = card.querySelector('.tool-description').textContent.toLowerCase();
+                const category = card.querySelector('.tool-category').textContent.toLowerCase();
+
+                const matchesSearch = title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    category.includes(searchTerm);
+                    
+                const matchesCategory = selectedCategory === 'all' || 
+                    category.includes(selectedCategory.replace('-', ' '));
+
+                card.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+            });
+        }
+
+        searchBox.addEventListener('input', filterTools);
+        categoryFilter.addEventListener('change', filterTools);
+    </script>
+</body></html>
